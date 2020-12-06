@@ -22,3 +22,17 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 /.eslintcache
+/.idea/.gitignore
+/.idea/charter-challenge.iml
+/.idea/codeStyles/codeStyleConfig.xml
+/src/.idea/codeStyles/codeStyleConfig.xml
+/public/favicon.ico
+/public/icon.png
+/.idea/misc.xml
+/.idea/modules.xml
+/src/.idea/modules.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/src/.idea/src.iml
+/.idea/vcs.xml
+/src/.idea/vcs.xml
+/src/.idea/workspace.xml
