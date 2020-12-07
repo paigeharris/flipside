@@ -1,1 +1,1 @@
-export { pink as primary } from './pink';
+export { blue as primary } from './blue';

@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 
 import { Content, Footer, Header, Nav, Root, presets } from "mui-layout";
@@ -8,11 +8,8 @@ import { ChevronLeft, MenuRounded, ChevronRight } from "@material-ui/icons";
 const config = presets.createStandardLayout();
 
 const styles = (theme) => {
-    const sm = theme.breakpoints.only('sm');
-    const md = theme.breakpoints.only('md');
     return {
-        root: {
-        },
+        root: {},
         toggleButton: {
             backgroundColor: theme.palette.blue["500"],
 
@@ -20,6 +17,9 @@ const styles = (theme) => {
                 backgroundColor: theme.palette.blue["900"]
             }
         },
+        headerBackground: {
+            backgroundColor: theme.palette.primary['500'],
+        }
     }
 };
 
@@ -38,12 +38,13 @@ class Main extends Component {
 
         return (
             <Root config={config}>
-                <Header renderMenuIcon={open => (open ? <ChevronLeft/> : <MenuRounded/>)}>
+                <Header className={classes.headerBackground}
+                        renderMenuIcon={open => (open ? <ChevronLeft/> : <MenuRounded/>)}>
                     {header && header}
                 </Header>
                 <Nav renderIcon={collapsed =>
-                         collapsed ? <ChevronRight/> : <ChevronLeft/>
-                     }
+                    collapsed ? <ChevronRight/> : <ChevronLeft/>
+                }
                      toggleProps={{
                          classes: {
                              root: classes.toggleButton
