@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, Toolbar, IconButton, Typography, } from "@material-ui/core";
+import { Toolbar } from "@material-ui/core";
 import { fade, withStyles } from '@material-ui/core/styles';
 
 import InputBase from '@material-ui/core/InputBase';
@@ -75,11 +75,10 @@ function Header(props) {
     return (
 
             <Toolbar className={classes.root}>
-                {/*<Typography className={classes.title} variant="h6" noWrap>*/}
-                {/*    Spectrum Restaurants*/}
-                {/*</Typography>*/}
-                {/*<div className={classes.grow}/>*/}
-                <img className={classes.logo} src={process.env.PUBLIC_URL + '/catch-you.png'} />
+                <img className={classes.logo}
+                     src={process.env.PUBLIC_URL + '/catch-you.png'}
+                     alt={'Catch you logo'}
+                />
 
                 <div className={classes.search}>
                     <div className={classes.searchIcon}>
@@ -95,9 +94,11 @@ function Header(props) {
                     />
                 </div>
 
-                <img className={classes.title} src={process.env.PUBLIC_URL + '/flipside.png'} />
+                <img className={classes.title}
+                     src={process.env.PUBLIC_URL + '/flipside.png'}
+                     alt={'Flipside Title'}
+                />
 
-                {/*<div className={classes.grow}/>*/}
             </Toolbar>
     );
 }
