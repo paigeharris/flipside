@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import Table from './Table'
-import { allRecordsSelector } from '../../redux/selectors/records';
+import { filteredRecordsSelector } from '../../redux/selectors/records';
 
 
 function mapStateToProps(state, ownProps) {
-    const records = allRecordsSelector(state);
+    const records = filteredRecordsSelector(state);
 
     return {
         records

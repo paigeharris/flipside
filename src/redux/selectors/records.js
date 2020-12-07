@@ -1,3 +1,7 @@
-export const allRecordsSelector = (state, model) => {
-    return state.records && state.records.length ? state.records : undefined
+export const allRecordsSelector = (state) => {
+    return state.records.all && state.records.all.length ? state.records.all : undefined
+};
+
+export const filteredRecordsSelector = (state) => {
+    return state.records.filtered && state.records.filtered.length ? state.records.filtered : undefined
 };

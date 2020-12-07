@@ -70,7 +70,13 @@ const styles = (theme) => {
 }
 
 function Header(props) {
-    const { classes } = props;
+    const { classes, updateSearch } = props;
+
+    const onChangeSearch = (e) => {
+        const updatedSearch = e.target.value.toLowerCase();
+
+        updateSearch(updatedSearch);
+    }
 
     return (
 
@@ -85,6 +91,7 @@ function Header(props) {
                         <SearchIcon/>
                     </div>
                     <InputBase
+                        onChange={onChangeSearch}
                         placeholder="Search…"
                         classes={{
                             root: classes.inputRoot,

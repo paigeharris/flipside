@@ -1,13 +1,9 @@
 import { connect } from 'react-redux';
 import Content from './Content'
-import { allRecordsSelector } from '../../redux/selectors/records';
 
 
 function mapStateToProps(state, ownProps) {
-    const records = allRecordsSelector(state);
-
     return {
-        records
     };
 }
 
