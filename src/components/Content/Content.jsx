@@ -1,17 +1,10 @@
 import React from "react";
-
+import Table from '../Table';
 
 function Content(props) {
-    const { records } = props;
-
     return (
         <div>
-            {records && records.map((record) => {
-                    return (
-                        <h1>{record.name}</h1>
-                    )
-                }
-            )}
+            <Table/>
         </div>
     );
 }
