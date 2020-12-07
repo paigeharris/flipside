@@ -19,7 +19,7 @@ const filterRecords = (records, filters) => {
 
     for (const filterKey in filters) {
         if (filterKey === FILTER_KEYS.SEARCH) {
-            const searchTerm = filters[FILTER_KEYS.SEARCH].trim();
+            const searchTerm = filters[FILTER_KEYS.SEARCH].trim().toLowerCase();
 
             updatedRecords = updatedRecords.filter((record) => record.name.toLowerCase().includes(searchTerm))
         }
