@@ -9,6 +9,9 @@ import { blue } from './blue';
 import { pink } from './pink';
 import { brown } from './brown';
 import { yellow } from './yellow';
+import { orange } from './orange';
+import { red } from './red';
+
 import { completed } from './completed';
 import { notstarted } from './notstarted';
 import { inprogress } from './inprogress';
@@ -26,6 +29,8 @@ export default {
   purple,
   green,
   blue,
+  orange,
+  red,
   pink,
   brown,
   yellow,

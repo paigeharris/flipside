@@ -1,5 +1,5 @@
 import {
-    HYDRATE_DB, UPDATE_SEARCH, UPDATE_FILTERS
+    HYDRATE_DB, UPDATE_SEARCH, UPDATE_FILTERS, UPDATE_SORT
 } from "../../common/actions";
 import { FILTER_KEYS } from "../../common/constants";
 
@@ -23,6 +23,7 @@ const filterRecords = (records, filters) => {
 
             updatedRecords = updatedRecords.filter((record) => record.name.toLowerCase().includes(searchTerm))
         }
+
         if (filterKey === FILTER_KEYS.SORT) {
             const sortValue = filters[FILTER_KEYS.SORT];
 
@@ -60,6 +61,22 @@ const records = (state = initState, action) => {
                 search,
                 filters: filtersWithSearch,
                 filtered: searchedRecords
+            }
+
+        case UPDATE_SORT:
+            const sort = action.payload;
+
+            const filtersWithSort = {
+                ...state.filters,
+                sort
+            };
+            const sortedRecords = filterRecords(state.all, filtersWithSort)
+
+            return {
+                ...state,
+                sort,
+                filters: filtersWithSort,
+                filtered: sortedRecords
             }
 
         case UPDATE_FILTERS:
