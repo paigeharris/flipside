@@ -27,6 +27,9 @@ const styles = (theme) => {
             marginLeft: 6,
             marginTop: 6,
             padding: '3px 10px'
+        },
+        rowText: {
+            marginTop: 8,
         }
     }
 };
@@ -56,7 +59,7 @@ function Row(props) {
                     )
                 } else {
                     return (
-                        <span key={value}>{value}</span>
+                        <span className={classes.rowText} key={value}>{value}</span>
                     )
                 }
 
