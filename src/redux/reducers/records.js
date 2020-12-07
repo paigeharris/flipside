@@ -8,7 +8,8 @@ const initState = {
     filtered: [],
     search: '',
     filters: {
-        search: ''
+        search: '',
+        sort: 0
     }
 };
 
@@ -20,7 +21,14 @@ const filterRecords = (records, filters) => {
         if (filterKey === FILTER_KEYS.SEARCH) {
             const searchTerm = filters[FILTER_KEYS.SEARCH].trim();
 
-            updatedRecords = updatedRecords.filter((record)=> record.name.toLowerCase().includes(searchTerm))
+            updatedRecords = updatedRecords.filter((record) => record.name.toLowerCase().includes(searchTerm))
+        }
+        if (filterKey === FILTER_KEYS.SORT) {
+            const sortValue = filters[FILTER_KEYS.SORT];
+
+            updatedRecords = updatedRecords.sort((a, b) => a.name.localeCompare(b.name))
+
+            if (sortValue) updatedRecords.reverse();
         }
     }
 
@@ -28,41 +36,43 @@ const filterRecords = (records, filters) => {
 }
 
 
-const records =  (state = initState, action) => {
+const records = (state = initState, action) => {
     switch (action.type) {
         case HYDRATE_DB:
             const hydratedRecords = Object.values(action.payload);
-         return {
-             ...state,
-             all: hydratedRecords,
-             filtered: hydratedRecords
-         }
+
+            return {
+                ...state,
+                all: hydratedRecords,
+                filtered: filterRecords(hydratedRecords, state.filters)
+            }
 
         case UPDATE_SEARCH:
-            //modify search filtered records here
-            console.warn('action.payload', action.payload)
             const search = action.payload;
             const filtersWithSearch = {
                 ...state.filters,
                 search
             };
-            const filteredRecords = filterRecords(state.all, filtersWithSearch)
+            const searchedRecords = filterRecords(state.all, filtersWithSearch)
+
             return {
                 ...state,
                 search,
                 filters: filtersWithSearch,
-                filtered: filteredRecords
+                filtered: searchedRecords
             }
 
         case UPDATE_FILTERS:
-            //modify filtered records here
             const filters = {
                 ...action.payload,
                 search: state.search
             };
+            const filteredRecords = filterRecords(state.all, filters)
+
             return {
                 ...state,
-                filters
+                filters,
+                filtered: filteredRecords
             }
 
         default:
