@@ -1,13 +1,12 @@
 import React from "react";
+import { Typography } from "@material-ui/core";
 
 
 
 function Header(props) {
 
     return (
-    <div>
-        Header
-    </div>
+        <Typography>Spectrum Restaurants</Typography>
     );
 }
 

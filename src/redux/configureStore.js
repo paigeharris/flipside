@@ -1,6 +1,6 @@
 import { applyMiddleware, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import { createLogger } from 'redux-logger';
+// import { createLogger } from 'redux-logger';
 import rootReducer from "./rootReducer";
 
 
@@ -13,7 +13,7 @@ function configStore(initialState = {}) {
   ];
 
   // middleware.push(createLogger());
-  middleware.push(createLogger({ diff: true })); //uncomment to log differences in store (slows dev performance)
+  // middleware.push(createLogger({ diff: true })); //uncomment to log differences in store (slows dev performance)
 
   const enhancers = composeEnhancers(
     applyMiddleware(...middleware)

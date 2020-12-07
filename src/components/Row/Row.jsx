@@ -35,7 +35,8 @@ function Row(props) {
     const { classes, record, rowOrder, isHeader } = props;
 
     return (
-        <div className={clsx(classes.root, isHeader && classes.header)}>
+        <div className={clsx(classes.root, isHeader && classes.header)}
+             key={record.id}>
             {record && rowOrder && rowOrder.map((key) => {
                 const value = record[key];
 
@@ -43,7 +44,9 @@ function Row(props) {
                     const genres = value.split(',');
 
                     return (
-                        <div className={classes.genreButtonContainer}>
+                        <div className={classes.genreButtonContainer}
+                             key={value}
+                        >
                         {genres && genres.map((genre)=>(
                             <Button className={classes.genreButton} key={genre}>
                                 {genre}
