@@ -1,0 +1,1 @@
+export const API_URL = "https://code-challenge.spectrumtoolbox.com/api/restaurants";

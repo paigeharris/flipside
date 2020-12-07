@@ -1,38 +1,22 @@
 import './App.css';
 import React from 'react';
-import ChevronLeft from '@material-ui/icons/ChevronLeft';
-import ChevronRight from '@material-ui/icons/ChevronRight';
-import MenuRounded from '@material-ui/icons/MenuRounded';
+import Main from "./components/Main";
+import Header from "./components/Header";
+import Content from './components/Content/Content.container';
+import Nav from './components/Nav';
+import Footer from './components/Footer';
 
-import {
-    Root,
-    Header,
-    Nav,
-    Content,
-    Footer,
-    presets,
-} from 'mui-layout';
-
-const config = presets.createStandardLayout();
 
 function App() {
     return (
-        <Root config={config}>
-            <Header renderMenuIcon={open => (open ? <ChevronLeft/> : <MenuRounded/>)}>
-                header
-            </Header>
-            <Nav renderIcon={collapsed =>
-                    collapsed ? <ChevronRight/> : <ChevronLeft/>
-                }>
-                nav
-            </Nav>
-            <Content>
-                content
-            </Content>
-            <Footer>
-                footer
-            </Footer>
-        </Root>
+       <div id={'App'}>
+           <Main header={(<Header/>)}
+                   content={(<Content/>)}
+                   footer={(<Footer/>)}
+                   nav={(<Nav/>)}
+
+           />
+       </div>
     );
 }
 
