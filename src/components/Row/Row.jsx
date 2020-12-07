@@ -9,8 +9,9 @@ const styles = (theme) => {
     return {
         root: {
             display: 'grid',
-            gridTemplateColumns: '20% 15% 10% 20% 35%',
+            gridTemplateColumns: '4fr 3fr 2fr 4fr 6fr',
             backgroundColor: theme.palette.dialoglightgrey['500'],
+            gridGap: 8,
             padding: 8,
             wordWrap: 'break-word'
         },
@@ -25,7 +26,7 @@ const styles = (theme) => {
             lineHeight: 'unset',
             marginLeft: 6,
             marginTop: 6,
-            padding: 1
+            padding: '2px 1px'
         }
     }
 };
