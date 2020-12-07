@@ -15,10 +15,6 @@ const records =  (state = initState, action) => {
     }
 };
 
-export const allRecordsSelector = (state, model) => {
-    return state.records && state.records.length ? state.records : undefined
-};
-
 
 export default records;
 

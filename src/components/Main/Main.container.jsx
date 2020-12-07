@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Main from './Main'
-import { allRecordsSelector } from '../../redux/reducers/records';
+import { allRecordsSelector } from '../../redux/selectors/records';
 import { hydrateDB } from "../../redux/dispatch";
 
 

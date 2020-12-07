@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Table from './Table'
-import { allRecordsSelector } from '../../redux/reducers/records';
+import { allRecordsSelector } from '../../redux/selectors/records';
 
 
 function mapStateToProps(state, ownProps) {
