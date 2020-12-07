@@ -1,0 +1,1 @@
+export { pink as primary } from './pink';

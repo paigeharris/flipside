@@ -7,6 +7,7 @@ import { HEADER, RESTAURANT } from "./constants";
 const styles = (theme) => {
     return {
         root: {
+            textAlign: 'center',
             display: 'grid',
             gridGap: '8px',
             margin: 24
