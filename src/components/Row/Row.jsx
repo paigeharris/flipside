@@ -11,7 +11,7 @@ const styles = (theme) => {
             gridGap: '8px',
         },
         header: {
-            backgroundColor: 'blue'
+            backgroundColor: theme.palette.blue['500']
         }
     }
 };
@@ -21,7 +21,7 @@ function Row(props) {
 
     return (
         <div className={clsx(classes.root, isHeader && classes.header)}>
-            {record && rowOrder && rowOrder.map((key)=>(
+            {record && rowOrder && rowOrder.map((key) => (
                 <span key={record[key]}>{record[key]}</span>
             ))}
         </div>
