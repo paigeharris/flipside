@@ -8,15 +8,24 @@ import SearchIcon from '@material-ui/icons/Search';
 const styles = (theme) => {
     return {
         root: {
+            display: 'flex',
+            justifyContent: 'space-between',
             backgroundColor: theme.palette.primary['500'],
-            boxShadow: 'unset'
+            boxShadow: 'unset',
+            width: '100%'
         },
         grow: {
             flexGrow: 1,
         },
+        logo: {
+            display: 'none',
+            [theme.breakpoints.up(475)]: {
+                display: 'block',
+            },
+        },
         title: {
             display: 'none',
-            [theme.breakpoints.up('sm')]: {
+            [theme.breakpoints.up(730)]: {
                 display: 'block',
             },
         },
@@ -64,12 +73,14 @@ function Header(props) {
     const { classes } = props;
 
     return (
-        <AppBar className={classes.root}
-                position="static">
-            <Toolbar>
-                <Typography className={classes.title} variant="h6" noWrap>
-                    Spectrum Restaurants
-                </Typography>
+
+            <Toolbar className={classes.root}>
+                {/*<Typography className={classes.title} variant="h6" noWrap>*/}
+                {/*    Spectrum Restaurants*/}
+                {/*</Typography>*/}
+                {/*<div className={classes.grow}/>*/}
+                <img className={classes.logo} src={process.env.PUBLIC_URL + '/catch-you.png'} />
+
                 <div className={classes.search}>
                     <div className={classes.searchIcon}>
                         <SearchIcon/>
@@ -83,9 +94,12 @@ function Header(props) {
                         inputProps={{ 'aria-label': 'search' }}
                     />
                 </div>
-                <div className={classes.grow}/>
+
+                <img className={classes.title} src={process.env.PUBLIC_URL + '/flipside.png'} />
+
+                {/*<div className={classes.grow}/>*/}
             </Toolbar>
-        </AppBar>);
+    );
 }
 
 export default withStyles(styles)(Header);

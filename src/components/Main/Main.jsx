@@ -11,10 +11,10 @@ const styles = (theme) => {
     return {
         root: {},
         toggleButton: {
-            backgroundColor: theme.palette.blue["500"],
+            backgroundColor: theme.palette.primary["500"],
 
             '&:hover': {
-                backgroundColor: theme.palette.blue["900"]
+                backgroundColor: theme.palette.primary["900"]
             }
         },
         headerBackground: {

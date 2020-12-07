@@ -16,12 +16,12 @@ const styles = (theme) => {
             wordWrap: 'break-word'
         },
         header: {
-            backgroundColor: `${theme.palette.blue['500']} !important`
+            backgroundColor: `${theme.palette.primary['500']} !important`
         },
         genreButtonContainer: {
         },
         genreButton: {
-            backgroundColor: theme.palette.pink['500'],
+            backgroundColor: theme.palette.primary['500'],
             textTransform: 'unset',
             lineHeight: 'unset',
             marginLeft: 6,
