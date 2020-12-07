@@ -26,7 +26,7 @@ const styles = (theme) => {
             lineHeight: 'unset',
             marginLeft: 6,
             marginTop: 6,
-            padding: '2px 1px'
+            padding: '3px 10px'
         }
     }
 };
