@@ -154,7 +154,7 @@ class AutoComplete extends PureComponent {
 
   getSelectStyles = (styles) => {
     const {theme} = this.props;
-    const spacing = theme.spacing.unit;
+    const spacing = theme.spacing(1);
     const selectStyles = {
       input: (base) => ({
         ...base,

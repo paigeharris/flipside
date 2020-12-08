@@ -11,9 +11,17 @@ export const sortSelector = (state) => {
 }
 
 export const statesSelector = (state) => {
-    return state.records.states;
+    return state.records.states.map((state)=>({value:state, label: state}));
 }
 
 export const genresSelector = (state) => {
-    return state.records.genres
+    return state.records.genres.map((genre)=>({value:genre, label: genre}));
+}
+
+export const currentStateSelector = (state) => {
+    return state.records.state;
+}
+
+export const currentGenreSelector = (state) => {
+    return state.records.genre;
 }

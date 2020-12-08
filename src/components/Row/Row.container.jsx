@@ -1,6 +1,12 @@
 import { connect } from 'react-redux';
 import Row from './Row'
-import { genresSelector, sortSelector, statesSelector } from "../../redux/selectors/records";
+import {
+    currentGenreSelector,
+    currentStateSelector,
+    genresSelector,
+    sortSelector,
+    statesSelector
+} from "../../redux/selectors/records";
 import { updateGenre, updateSort, updateState } from "../../redux/dispatch/records";
 
 
@@ -8,11 +14,15 @@ function mapStateToProps(state, ownProps) {
     const sortOrder = sortSelector(state);
     const states = statesSelector(state);
     const genres = genresSelector(state);
+    const currentGenre = currentGenreSelector(state);
+    const currentState = currentStateSelector(state);
 
     return {
         sortOrder,
         states,
-        genres
+        genres,
+        currentGenre,
+        currentState
     };
 }
 

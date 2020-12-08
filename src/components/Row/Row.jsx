@@ -61,7 +61,7 @@ const styles = (theme) => {
 };
 
 function Row(props) {
-    const { classes, record, rowOrder, isHeader, sortOrder, updateSort } = props;
+    const { classes, record, rowOrder, isHeader, sortOrder, updateSort, genres, states, updateState, updateGenre, currentGenre, currentState } = props;
 
     const onClickSort = () => {
         updateSort(sortOrder ? 0 : 1)
@@ -107,23 +107,11 @@ function Row(props) {
                             <AutoComplete className={classes.headerSort}
                                           placeholder={'State'}
                                           name={'state'}
-                                          onChange={()=>{}}
-                                // fullWidth
-                                          options={[
-                                              {
-                                                  value: 'CO',
-                                                  label: 'CO'
-                                              }, {
-                                                  value: 'CA',
-                                                  label: 'CA',
-                                              },
-                                              {
-                                                  value: 'DE',
-                                                  label: 'DE'
-                                              }
-                                          ]
-
-                                          }/>
+                                          value={currentState}
+                                          onChange={updateState}
+                                          key={'state'}
+                                          options={states}
+                            />
                         )
 
                     } else if(key === RESTAURANT.GENRE) {
@@ -131,23 +119,11 @@ function Row(props) {
                             <AutoComplete className={classes.headerSort}
                                           placeholder={'Genre'}
                                           name={'genre'}
-                                          onChange={()=>{}}
-                                // fullWidth
-                                          options={[
-                                              {
-                                                  value: 'Genre',
-                                                  label: 'Genre1'
-                                              }, {
-                                                  value: 'Genre2',
-                                                  label: 'Genre2',
-                                              },
-                                              {
-                                                  value: 'Genre3',
-                                                  label: 'Genre3'
-                                              }
-                                          ]
-
-                                          }/>
+                                          value={currentGenre}
+                                          onChange={updateGenre}
+                                          key={'genre'}
+                                          options={genres}
+                            />
                         )
 
                     }else {

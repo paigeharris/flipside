@@ -25,26 +25,6 @@ const filterRecords = (records, filters) => {
     let updatedRecords = [...records];
 
     for (const filterKey in filters) {
-        // if (filterKey === FILTER_KEYS.SEARCH) {
-        //     const searchTerm = filters[FILTER_KEYS.SEARCH].trim().toLowerCase();
-        //
-        //     if (filters[filterKey] && filterKey === FILTER_KEYS.GENRE ) {
-        //         const searchTerm = filters[FILTER_KEYS.GENRE].trim().toLowerCase();
-        //
-        //         updatedRecords = updatedRecords.filter((record) => record.name.toLowerCase().includes(searchTerm))
-        //     }
-        //
-        //     if (filters[filterKey] && filterKey === FILTER_KEYS.STATE) {
-        //         const searchTerm = filters[FILTER_KEYS.SEARCH].trim().toLowerCase();
-        //
-        //         updatedRecords = updatedRecords.filter((record) => record.name.toLowerCase().includes(searchTerm))
-        //     }
-        //     updatedRecords = updatedRecords.filter((record) => record.name.toLowerCase().includes(searchTerm))
-        // }
-        //
-        //
-
-
         if (filterKey === FILTER_KEYS.SORT) {
             const sortValue = filters[FILTER_KEYS.SORT];
 
@@ -112,9 +92,6 @@ const records = (state = initState, action) => {
 
         case UPDATE_STATE:
             const updatedState = action.payload;
-
-            console.log('update state', updatedState)
-
             const filtersWithState = {
                 ...state.filters,
                 state: updatedState
@@ -130,9 +107,6 @@ const records = (state = initState, action) => {
 
         case UPDATE_GENRE:
             const genre = action.payload;
-            console.log('update genre', genre)
-
-
             const filtersWithGenre = {
                 ...state.filters,
                 genre
