@@ -11,7 +11,7 @@ export const HEADER = {
     name: 'Name',
     city: 'City',
     state: 'State',
-    telephone: 'Phone Number',
+    telephone: 'Phone #',
     genre: 'Genre',
     id: 'Header'
 }

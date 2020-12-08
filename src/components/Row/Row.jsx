@@ -10,14 +10,20 @@ import AutoComplete from "../AutoComplete/AutoComplete";
 
 
 const styles = (theme) => {
+    const md = theme.breakpoints.up('md');
+
     return {
         root: {
             display: 'grid',
             gridTemplateColumns: '4fr 3fr 2fr 4fr 6fr',
             backgroundColor: theme.palette.dialoglightgrey['500'],
-            gridGap: 8,
-            padding: 8,
-            wordWrap: 'break-word'
+            gridGap: 2,
+            padding: 0,
+            wordBreak: 'break-word',
+
+            [md]: {
+                padding: 8,
+            }
         },
         header: {
             backgroundColor: `${theme.palette.primary['500']} !important`
@@ -32,19 +38,25 @@ const styles = (theme) => {
             padding: '3px 10px'
         },
         headerText: {
+            minWidth: 40,
             display: 'flex',
-            justifySelf: 'center',
+            justifyContent: 'center',
             alignSelf: 'center',
+
         },
         rowText: {
+            minWidth: 40,
             display: 'flex',
-            justifySelf: 'center',
-            alignSelf: 'center'
+            justifyContent: 'center',
+            alignSelf: 'center',
+
         },
         headerSort: {
             display: 'flex',
             justifyContent: 'center',
-            alignItems: 'center'
+            alignItems: 'center',
+            minWidth: 40,
+
         },
         headerFilter: {},
         sortArrow: {

@@ -6,12 +6,20 @@ import Row from '../Row';
 import { HEADER, RESTAURANT } from "./constants";
 
 const styles = (theme) => {
+    const md = theme.breakpoints.up('md');
+
+
     return {
         root: {
             textAlign: 'center',
             display: 'grid',
-            gridGap: '8px',
-            margin: 24
+            gridGap: '2px',
+            margin: 2,
+
+            [md]: {
+                margin: 24,
+                gridGap: '8px',
+            }
         },
         paginator: {
 
