@@ -1,23 +1,43 @@
 import './App.css';
 import React from 'react';
+import { withStyles } from "@material-ui/styles";
+
 import Main from "./components/Main";
 import Header from "./components/Header";
 import Content from './components/Content';
-import Nav from './components/Nav';
 import Footer from './components/Footer';
 
+const styles = (theme) => {
+    return {
+        root: {
+            overflow: 'hidden',
+            height: '100vh',
+            width: '100vw',
 
-function App() {
+            '& button': {
+                background: theme.palette.primary["500"],
+
+                '&:hover': {
+                    background: theme.palette.yellow['900']
+                }
+            }
+        }
+    }
+};
+
+
+function App(props) {
+    const { classes } = props;
+
     return (
-       <div id={'App'}>
-           <Main header={(<Header/>)}
-                   content={(<Content/>)}
-                   footer={(<Footer/>)}
-                   nav={(<Nav/>)}
+        <div className={classes.root}>
+            <Main header={(<Header/>)}
+                  content={(<Content/>)}
+                  footer={(<Footer/>)}
 
-           />
-       </div>
+            />
+        </div>
     );
 }
 
-export default App;
+export default withStyles(styles)(App);

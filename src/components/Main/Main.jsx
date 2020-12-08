@@ -5,7 +5,7 @@ import { Content, Footer, Header, Nav, Root, presets } from "mui-layout";
 import { ChevronLeft, MenuRounded, ChevronRight } from "@material-ui/icons";
 
 
-const config = presets.createStandardLayout();
+const config = presets.createDefaultLayout()
 
 const styles = (theme) => {
     return {
@@ -34,7 +34,7 @@ class Main extends Component {
 
 
     render() {
-        const { classes, header, nav, content, footer } = this.props;
+        const { classes, header, content, footer } = this.props;
 
         return (
             <Root config={config}>
@@ -42,17 +42,6 @@ class Main extends Component {
                         renderMenuIcon={open => (open ? <ChevronLeft/> : <MenuRounded/>)}>
                     {header && header}
                 </Header>
-                <Nav renderIcon={collapsed =>
-                    collapsed ? <ChevronRight/> : <ChevronLeft/>
-                }
-                     toggleProps={{
-                         classes: {
-                             root: classes.toggleButton
-                         }
-                     }}
-                >
-                    {nav && nav}
-                </Nav>
                 <Content>
                     {content && content}
                 </Content>

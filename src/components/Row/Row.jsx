@@ -1,9 +1,12 @@
 import React from "react";
 import clsx from 'clsx';
-import { fade, withStyles } from "@material-ui/core/styles";
 import { RESTAURANT } from "../Table/constants";
-import Button from "@material-ui/core/Button";
+
+import { withStyles } from "@material-ui/core/styles";
 import { ArrowUpward, ArrowDownward } from "@material-ui/icons";
+import { Button } from "@material-ui/core";
+
+import AutoComplete from "../AutoComplete/AutoComplete";
 
 
 const styles = (theme) => {
@@ -28,20 +31,29 @@ const styles = (theme) => {
             marginTop: 6,
             padding: '3px 10px'
         },
-        headerText: {},
+        headerText: {
+            display: 'flex',
+            justifySelf: 'center',
+            alignSelf: 'center',
+        },
         rowText: {
-            marginTop: 8,
+            display: 'flex',
+            justifySelf: 'center',
+            alignSelf: 'center'
         },
         headerSort: {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center'
         },
+        headerFilter: {
+
+        },
         sortArrow: {
             fontSize: 16,
 
             '&:hover': {
-                color: theme.palette.yellow['500'],
+                color: theme.palette.yellow['900'],
                 cursor: 'pointer'
             },
         }
@@ -76,7 +88,8 @@ function Row(props) {
                         </div>
                     )
                 } else if (isHeader) {
-                    return key === RESTAURANT.NAME ? (
+                    if (key === RESTAURANT.NAME) {
+                        return (
                             <div className={classes.headerSort}
                                  key={value}>
                                 <span className={classes.headerText}>
@@ -88,10 +101,61 @@ function Row(props) {
                                                       onClick={onClickSort}
                                 />)}
                             </div>
-                        ) :
-                        (
+                        )
+                    } else if (key === RESTAURANT.STATE) {
+                        return (
+                            <AutoComplete className={classes.headerSort}
+                                          placeholder={'State'}
+                                          name={'state'}
+                                          onChange={()=>{}}
+                                // fullWidth
+                                          options={[
+                                              {
+                                                  value: 'CO',
+                                                  label: 'CO'
+                                              }, {
+                                                  value: 'CA',
+                                                  label: 'CA',
+                                              },
+                                              {
+                                                  value: 'DE',
+                                                  label: 'DE'
+                                              }
+                                          ]
+
+                                          }/>
+                        )
+
+                    } else if(key === RESTAURANT.GENRE) {
+                        return (
+                            <AutoComplete className={classes.headerSort}
+                                          placeholder={'Genre'}
+                                          name={'genre'}
+                                          onChange={()=>{}}
+                                // fullWidth
+                                          options={[
+                                              {
+                                                  value: 'Genre',
+                                                  label: 'Genre1'
+                                              }, {
+                                                  value: 'Genre2',
+                                                  label: 'Genre2',
+                                              },
+                                              {
+                                                  value: 'Genre3',
+                                                  label: 'Genre3'
+                                              }
+                                          ]
+
+                                          }/>
+                        )
+
+                    }else {
+                        return (
                             <span className={classes.headerText} key={value}>{value}</span>
                         )
+                    }
+
 
                 } else {
                     return (
