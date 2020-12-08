@@ -1,7 +1,7 @@
 import {
     HYDRATE_DB,
     UPDATE_FILTERS,
-    UPDATE_GENRE,
+    UPDATE_GENRE, UPDATE_PAGE,
     UPDATE_SEARCH,
     UPDATE_SORT,
     UPDATE_STATE
@@ -55,5 +55,12 @@ export const updateGenre = (genre) => (dispatch, getState) => {
     dispatch({
         type: UPDATE_GENRE,
         payload: genre
+    });
+};
+
+export const updatePage = (page) => (dispatch, getState) => {
+    dispatch({
+        type: UPDATE_PAGE,
+        payload: page
     });
 };

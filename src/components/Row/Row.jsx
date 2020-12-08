@@ -46,9 +46,7 @@ const styles = (theme) => {
             justifyContent: 'center',
             alignItems: 'center'
         },
-        headerFilter: {
-
-        },
+        headerFilter: {},
         sortArrow: {
             fontSize: 16,
 
@@ -67,6 +65,10 @@ function Row(props) {
         updateSort(sortOrder ? 0 : 1)
     };
 
+    const onClickGenreButton = (genre) => (e) => {
+        updateGenre(genre)
+    }
+
     return (
         <div className={clsx(classes.root, isHeader && classes.header)}
              key={record.id}>
@@ -81,7 +83,9 @@ function Row(props) {
                              key={value}
                         >
                             {genres && genres.map((genre) => (
-                                <Button className={classes.genreButton} key={genre}>
+                                <Button className={classes.genreButton}
+                                        onClick={onClickGenreButton(genre)}
+                                        key={genre}>
                                     {genre}
                                 </Button>
                             ))}
@@ -114,7 +118,7 @@ function Row(props) {
                             />
                         )
 
-                    } else if(key === RESTAURANT.GENRE) {
+                    } else if (key === RESTAURANT.GENRE) {
                         return (
                             <AutoComplete className={classes.headerSort}
                                           placeholder={'Genre'}
@@ -126,7 +130,7 @@ function Row(props) {
                             />
                         )
 
-                    }else {
+                    } else {
                         return (
                             <span className={classes.headerText} key={value}>{value}</span>
                         )

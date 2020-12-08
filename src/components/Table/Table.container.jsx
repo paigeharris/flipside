@@ -1,18 +1,29 @@
 import { connect } from 'react-redux';
 import Table from './Table'
-import { filteredRecordsSelector } from '../../redux/selectors/records';
+import {
+    currentPageSelector,
+    currentRecordsSelector,
+    totalPagesSelector
+} from '../../redux/selectors/records';
+import { updatePage } from "../../redux/dispatch/records";
 
 
 function mapStateToProps(state, ownProps) {
-    const records = filteredRecordsSelector(state);
+    const records = currentRecordsSelector(state);
+    const page = currentPageSelector(state);
+    const pages = totalPagesSelector(state);
 
     return {
-        records
+        records,
+        page,
+        pages
     };
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
     return {
+        updatePage: (page) => dispatch(updatePage(page)),
+
     }
 }
 

@@ -1,5 +1,6 @@
 import React from "react";
-import { withStyles } from "@material-ui/core/styles";
+import { fade, withStyles } from "@material-ui/core/styles";
+import { ArrowBack, ArrowForward } from "@material-ui/icons";
 
 import Row from '../Row';
 import { HEADER, RESTAURANT } from "./constants";
@@ -11,14 +12,35 @@ const styles = (theme) => {
             display: 'grid',
             gridGap: '8px',
             margin: 24
+        },
+        paginator: {
+
+        },
+        pageArrow: {
+            '&:hover': {
+                cursor: 'pointer',
+                backgroundColor: fade(theme.palette.common.white, 0.25),
+            },
         }
     }
 };
 
 
 function Table(props) {
-    const { classes, records } = props;
+    const { classes, records, page, pages, updatePage } = props;
     const rowOrder = [RESTAURANT.NAME, RESTAURANT.CITY, RESTAURANT.STATE, RESTAURANT.PHONE, RESTAURANT.GENRE];
+
+    const onClickPageForward = () => {
+        if ( page < pages - 1 ) {
+            updatePage(page + 1)
+        }
+    }
+
+    const onClickPageBack = () => {
+        if ( page > 0 ) {
+            updatePage(page - 1)
+        }
+    }
 
     return (
         <div className={classes.root}>
@@ -38,6 +60,14 @@ function Table(props) {
                 }) :
                 (<h1>No records found</h1>)
             }
+            <div className={classes.paginator}>
+            <ArrowBack className={classes.pageArrow}
+                       onClick={onClickPageBack}/>
+                {page + 1} / {pages}
+            <ArrowForward className={classes.pageArrow}
+                          onClick={onClickPageForward}
+            />
+            </div>
         </div>
     );
 }

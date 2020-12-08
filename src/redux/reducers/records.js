@@ -1,5 +1,5 @@
 import {
-    HYDRATE_DB, UPDATE_SEARCH, UPDATE_FILTERS, UPDATE_SORT, UPDATE_GENRE, UPDATE_STATE
+    HYDRATE_DB, UPDATE_SEARCH, UPDATE_FILTERS, UPDATE_SORT, UPDATE_GENRE, UPDATE_STATE, UPDATE_PAGE
 } from "../../common/actions";
 import { FILTER_KEYS } from "../../common/constants";
 import _uniq from 'lodash/uniq';
@@ -7,6 +7,9 @@ import _uniq from 'lodash/uniq';
 const initState = {
     all: [],
     filtered: [],
+    current: [],
+    page: 0,
+    pages: 1,
     search: '',
     state: null,
     genre: null,
@@ -17,7 +20,7 @@ const initState = {
         sort: 0,
         state: null,
         genre: null
-    }
+    },
 };
 
 
@@ -46,7 +49,9 @@ const filterRecords = (records, filters) => {
 
     return updatedRecords
 }
-
+const pageLength = 10;
+const getPageRecords = (records, page) => records.slice(page * pageLength, page * pageLength + pageLength);
+const getAmountOfPages =  (filteredRecords) => Math.ceil(filteredRecords.length / pageLength);
 
 const records = (state = initState, action) => {
     switch (action.type) {
@@ -54,13 +59,16 @@ const records = (state = initState, action) => {
             const hydratedRecords = Object.values(action.payload);
             const genres = _uniq(hydratedRecords.map((record) => record.genre.split(',')).flat());
             const states = _uniq(hydratedRecords.map((record)=> record.state));
+            const firstFilteredRecords = filterRecords(hydratedRecords, state.filters);
 
             return {
                 ...state,
                 all: hydratedRecords,
-                filtered: filterRecords(hydratedRecords, state.filters),
+                filtered: firstFilteredRecords,
+                current: getPageRecords(firstFilteredRecords, state.page),
                 genres,
-                states
+                states,
+                pages: getAmountOfPages(firstFilteredRecords)
             }
 
         case UPDATE_SEARCH:
@@ -75,7 +83,11 @@ const records = (state = initState, action) => {
                 ...state,
                 search,
                 filters: filtersWithSearch,
-                filtered: searchedRecords
+                filtered: searchedRecords,
+                current: getPageRecords(searchedRecords, 0),
+                page: 0,
+                pages: getAmountOfPages(searchedRecords)
+
             }
 
         case UPDATE_SORT:
@@ -91,7 +103,10 @@ const records = (state = initState, action) => {
                 ...state,
                 sort,
                 filters: filtersWithSort,
-                filtered: sortedRecords
+                filtered: sortedRecords,
+                current: getPageRecords(sortedRecords, 0),
+                page: 0,
+                pages: getAmountOfPages(sortedRecords)
             }
 
         case UPDATE_STATE:
@@ -106,7 +121,10 @@ const records = (state = initState, action) => {
                 ...state,
                 state: updatedState,
                 filters: filtersWithState,
-                filtered: stateRecords
+                filtered: stateRecords,
+                current: getPageRecords(stateRecords, 0),
+                page: 0,
+                pages: getAmountOfPages(stateRecords)
             }
 
         case UPDATE_GENRE:
@@ -121,7 +139,19 @@ const records = (state = initState, action) => {
                 ...state,
                 genre,
                 filters: filtersWithGenre,
-                filtered: genreRecords
+                filtered: genreRecords,
+                current: getPageRecords(genreRecords, 0),
+                page: 0,
+                pages: getAmountOfPages(genreRecords)
+            }
+
+        case UPDATE_PAGE:
+            const page = action.payload;
+            const currentRecords = getPageRecords(filterRecords(state.all, state.filters), page)
+            return {
+                ...state,
+                page,
+                current: currentRecords
             }
 
 
@@ -135,8 +165,14 @@ const records = (state = initState, action) => {
             return {
                 ...state,
                 filters,
-                filtered: filteredRecords
+                filtered: filteredRecords,
+                current: getPageRecords(filteredRecords, 0),
+                page: 0,
+                pages: getAmountOfPages(filteredRecords)
             }
+
+
+
 
         default:
             return state;

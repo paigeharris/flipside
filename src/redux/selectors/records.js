@@ -25,3 +25,15 @@ export const currentStateSelector = (state) => {
 export const currentGenreSelector = (state) => {
     return state.records.genre;
 }
+
+export const currentPageSelector = (state) => {
+    return state.records.page;
+}
+
+export const currentRecordsSelector = (state) => {
+    return state.records.current;
+}
+
+export const totalPagesSelector = (state) => {
+    return state.records.pages;
+}
