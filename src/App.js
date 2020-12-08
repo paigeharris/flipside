@@ -10,7 +10,7 @@ import Footer from './components/Footer';
 const styles = (theme) => {
     return {
         root: {
-            overflow: 'hidden',
+            overflow: 'auto',
             height: '100vh',
             width: '100vw',
 
