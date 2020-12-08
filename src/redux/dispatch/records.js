@@ -1,4 +1,11 @@
-import { HYDRATE_DB, UPDATE_FILTERS, UPDATE_SEARCH, UPDATE_SORT } from "../../common/actions";
+import {
+    HYDRATE_DB,
+    UPDATE_FILTERS,
+    UPDATE_GENRE,
+    UPDATE_SEARCH,
+    UPDATE_SORT,
+    UPDATE_STATE
+} from "../../common/actions";
 
 export const hydrateDB = () => (dispatch, getState) => {
     fetch(process.env.REACT_APP_API_URL,
@@ -34,5 +41,19 @@ export const updateFilters = (filters) => (dispatch, getState) => {
     dispatch({
         type: UPDATE_FILTERS,
         payload: filters
+    });
+};
+
+export const updateState = (state) => (dispatch, getState) => {
+    dispatch({
+        type: UPDATE_STATE,
+        payload: state
+    });
+};
+
+export const updateGenre = (genre) => (dispatch, getState) => {
+    dispatch({
+        type: UPDATE_GENRE,
+        payload: genre
     });
 };

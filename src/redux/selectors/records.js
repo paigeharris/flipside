@@ -9,3 +9,11 @@ export const filteredRecordsSelector = (state) => {
 export const sortSelector = (state) => {
     return state.records.filters && state.records.filters.sort;
 }
+
+export const statesSelector = (state) => {
+    return state.records.states;
+}
+
+export const genresSelector = (state) => {
+    return state.records.genres
+}
