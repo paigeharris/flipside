@@ -31,11 +31,15 @@ const filterRecords = (records, filters) => {
             updatedRecords = updatedRecords.sort((a, b) => a.name.localeCompare(b.name))
 
             if (sortValue) updatedRecords.reverse();
+        } else if(filterKey === FILTER_KEYS.SEARCH) {
+            const searchTerm = filters[filterKey].trim().toLowerCase();
+
+            updatedRecords = updatedRecords.filter((record) => record.name.toLowerCase().includes(searchTerm))
         } else {
             if (filters[filterKey]) {
                 const searchTerm = filters[filterKey].trim().toLowerCase();
-                updatedRecords = updatedRecords.filter((record) => record[filterKey].toLowerCase().includes(searchTerm))
 
+                updatedRecords = updatedRecords.filter((record) => record[filterKey] && record[filterKey].toLowerCase().includes(searchTerm))
             }
         }
     }

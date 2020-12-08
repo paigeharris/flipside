@@ -47,6 +47,7 @@ const styles = (theme) => {
       flex: 1,
       overflow: 'hidden',
       padding: 0,
+      minWidth: 35,
 
       '& div': {
         display: 'grid',
@@ -153,8 +154,6 @@ class AutoComplete extends PureComponent {
   };
 
   getSelectStyles = (styles) => {
-    const {theme} = this.props;
-    const spacing = theme.spacing(1);
     const selectStyles = {
       input: (base) => ({
         ...base,
